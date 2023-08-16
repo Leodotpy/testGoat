@@ -24,6 +24,16 @@
     <h1>GoatCounter Page Views</h1>
     <p>Page views: <span class="goatcounter"></span></p>
 
+    <!-- Display the visit count -->
+    <script>
+        var t = setInterval(function() {
+            if (window.goatcounter && window.goatcounter.visit_count) {
+                clearInterval(t)
+                window.goatcounter.visit_count({append: 'body'})
+            }
+        }, 100)
+    </script>
+
 </body>
 
 </html>
