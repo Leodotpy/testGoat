@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoatCounter Page Views</title>
-    <script async src="https://pixelgoat.goatcounter.com/count.js" data-goatcounter="https://pixelgoat.goatcounter.com/count"></script>
+    <script async src="https://pixelgoat.goatcounter.com/count.js"
+        data-goatcounter="https://pixelgoat.goatcounter.com/count"></script>
+    <script data-goatcounter="https://pixelgoat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 </head>
+
 <body>
 
-<h1>GoatCounter Page Views</h1>
-<p>Page views: <span id="viewCount">Loading...</span></p>
+    <h1>GoatCounter Page Views</h1>
+    <p>Page views: <span id="viewCount">Loading...</span></p>
+    <style>
+        .no-js .goatcounter {
+            display: none
+        }
 
-<script>
-    // Fetch the page views from GoatCounter
-    fetch('https://pixelgoat.goatcounter.com/api/v0/count?show=total', {
-        headers: {
-            'Content-Type': 'application/json',
+        .js .goatcounter {
+            display: block;
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-        const viewCount = document.getElementById('viewCount');
-        if (data.total && data.total.count) {
-            viewCount.textContent = data.total.count;
-        } else {
-            viewCount.textContent = "Error fetching views.";
-        }
-    })
-    .catch(() => {
-        const viewCount = document.getElementById('viewCount');
-        viewCount.textContent = "Error fetching views.";
-    });
-</script>
+    </style>
+
+    <script>
+        // Fetch the page views from GoatCounter
+        fetch('https://pixelgoat.goatcounter.com/api/v0/count?show=total', {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                const viewCount = document.getElementById('viewCount');
+                if (data.total && data.total.count) {
+                    viewCount.textContent = data.total.count;
+                } else {
+                    viewCount.textContent = "Error fetching views.";
+                }
+            })
+            .catch(() => {
+                const viewCount = document.getElementById('viewCount');
+                viewCount.textContent = "Error fetching views.";
+            });
+    </script>
+    <h1>GoatCounter Page Views</h1>
+    <p>Page views: <a href="https://pixelgoat.goatcounter.com" rel="nofollow" class="goatcounter"></a></p>
+
 
 </body>
+
 </html>
