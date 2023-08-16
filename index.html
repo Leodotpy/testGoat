@@ -8,7 +8,8 @@
 
     <!-- Content Security Policy -->
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' https://pixelgoat.goatcounter.com/count; connect-src https://pixelgoat.goatcounter.com; frame-src https://pixelgoat.goatcounter.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' https://pixelgoat.goatcounter.com/count; connect-src https://pixelgoat.goatcounter.com; frame-src https://pixelgoat.goatcounter.com;">
 
 
     <title>GoatCounter Page Views</title>
@@ -27,14 +28,36 @@
 
     <!-- Display the visit count -->
     <script>
-        var t = setInterval(function() {
+        var t = setInterval(function () {
             if (window.goatcounter && window.goatcounter.visit_count) {
                 clearInterval(t)
-                window.goatcounter.visit_count({append: 'body'})
+                window.goatcounter.visit_count({ append: 'body' })
             }
         }, 100)
     </script>
 
+    <script>
+        var t = setInterval(function () {
+            if (window.goatcounter && window.goatcounter.visit_count) {
+                clearInterval(t)
+                window.goatcounter.visit_count({ append: 'body' })
+            }
+        }, 100)
+    </script>
+    <script data-goatcounter="https://pixelgoat.goatcounter.com/count" async
+        src="https://cdn.jsdelivr.net/gh/Leodotpy/testGoat@main/count.js"></script>
+
+    <div>Number of visitors: <div id="stats"></div>
+    </div>
+
+    <script>
+        var r = new XMLHttpRequest();
+        r.addEventListener('load', function () {
+            document.querySelector('#stats').innerText = JSON.parse(this.responseText).count
+        })
+        r.open('GET', 'https://pixelgoat.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+        r.send()
+    </script>
 </body>
 
 </html>
