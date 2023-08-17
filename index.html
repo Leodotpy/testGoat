@@ -18,13 +18,11 @@
 </head>
 
 <body>
-
-    <h1>GoatCounter Page Views</h1>
-    <div>Number of visitors: <span id="stats"></span></div>
+    <div>Number of visitors: <div id="stats"></div></div>
 
     <script>
         var r = new XMLHttpRequest();
-        r.addEventListener('load', function () {
+        r.addEventListener('load', function() {
             document.querySelector('#stats').innerText = JSON.parse(this.responseText).count
         })
         r.open('GET', 'https://pixelgoat.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
